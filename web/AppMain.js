@@ -14,6 +14,7 @@ import PropsTest from "./start/PropsTest";
 import StateTest from "./start/StateTest";
 import RefTest from "./start/RefTest"
 import FlexboxTest from "./start/FlexboxTest";
+import FetchTest from "./net/FetchTest"
 
 var Items = [
     {key:'HelloReactTest'},
@@ -21,7 +22,8 @@ var Items = [
     {key:'PropsTest'},
     {key:'StateTest'},
     {key:'RefTest'},
-    {key:'FlexboxTest'}
+    {key:'FlexboxTest'},
+    {key:'FetchTest'}
     ];
 
 class AppMain extends  Component {
@@ -93,7 +95,8 @@ const RootStack = createStackNavigator({
     PropsTest:{screen:PropsTest},
     StateTest:{screen:StateTest},
     RefTest:{screen:RefTest},
-    FlexboxTest:{screen:FlexboxTest}
+    FlexboxTest:{screen:FlexboxTest},
+    FetchTest:{screen:FetchTest}
 });
 
 export default createAppContainer(RootStack);

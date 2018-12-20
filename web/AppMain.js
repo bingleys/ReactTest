@@ -16,17 +16,7 @@ import RefTest from "./start/RefTest"
 import FlexboxTest from "./start/FlexboxTest";
 import FetchTest from "./net/FetchTest"
 
-var Items = [
-    {key:'HelloReactTest'},
-    {key:'ComponentTest'},
-    {key:'PropsTest'},
-    {key:'StateTest'},
-    {key:'RefTest'},
-    {key:'FlexboxTest'},
-    {key:'FetchTest'}
-    ];
-
-class AppMain extends  Component {
+class AppMain extends Component {
 
     static navigationOptions = {
         title: 'Demo',
@@ -34,9 +24,24 @@ class AppMain extends  Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            data:Items,
+
+        let temp = [];
+        let keys = RootStack.router.childRouters;
+        let i = 0;
+        for(let item in keys){
+            if(i != 0){
+                temp.push({
+                    key: i,
+                    value: item.toString(),
+                })
+            }
+            i++;
         }
+        this.state = {
+            data:temp,
+        }
+        temp = null;
+        keys = null;
     }
 
     render() {
@@ -45,6 +50,7 @@ class AppMain extends  Component {
                 <FlatList
                     data={this.state.data}
                     horizontal={false}
+                    keyExtractor={(item, index) => index.toString()}
                     renderItem={({item}) => this._renderItem(item)}
                 />
             </View>
@@ -56,7 +62,7 @@ class AppMain extends  Component {
             <TouchableOpacity activeOpacity={0.3}
                               onPress={()  => this.onItemPressed(item)}>
                 <View style={styles.cellStyle}>
-                    <Text style={styles.cellText}> {item.key} </Text>
+                    <Text style={styles.cellText}> {item.value} </Text>
                 </View>
             </TouchableOpacity>
         );
@@ -65,7 +71,7 @@ class AppMain extends  Component {
 
     onItemPressed(item) {
         const {navigate} = this.props.navigation;
-        navigate(item.key,{navTitle:item.key})
+        navigate(item.value,{navTitle:item.value})
     };
 }
 const styles = StyleSheet.create({
@@ -95,7 +101,7 @@ const RootStack = createStackNavigator({
     PropsTest:{screen:PropsTest},
     StateTest:{screen:StateTest},
     RefTest:{screen:RefTest},
-    FlexboxTest:{screen:FlexboxTest},
+    FlexBoxTest:{screen:FlexboxTest},
     FetchTest:{screen:FetchTest}
 });
 

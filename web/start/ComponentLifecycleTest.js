@@ -46,6 +46,7 @@ export default class ComponentLifecycleTest extends Component{
     }
 
     componentDidUpdate(props, state, snaptshot) {
+        console.log("----componentDidUpdate--" +  "snaptshot:" + snaptshot)
     }
 
     componentWillUnmount() {
@@ -68,6 +69,7 @@ export default class ComponentLifecycleTest extends Component{
         // 该方法在实际改动（比如 DOM 更新）发生前的“瞬间”被调用，返回值将作为 `componentDidUpdate` 的第三个参数
 
         // 配合 `componentDidUpdate` 使用，这一方法可以取代 `componentWillUpdate`
+        return "test"
     }
 }
 

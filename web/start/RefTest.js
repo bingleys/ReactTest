@@ -19,7 +19,11 @@ export default class RefTest extends Component{
     }
 
 
-
+    /**
+     * 我们在DOM Element中使用ref时，回调函数将接收当前的DOM元素作为参数，然后存储一个指向这个DOM元素的引用
+     * 当组件挂载后和卸载后，以及ref属性本身发生变化时，回调函数就会被调用。
+     * @returns {*}
+     */
     render(){
         return (
 
@@ -28,13 +32,13 @@ export default class RefTest extends Component{
                 onPress={
                     ()=>{
                         this.setState({
-                            x:this.refs.refTest.getX()
+                            x:this.refTest.getX()
                         })
                     }
                 }
                 > 获取当前位置：{this.state.x}</Text>
 
-                <StateTest ref= "refTest"/>
+                <StateTest ref = {(StateTest) => {this.refTest = StateTest}}/>
             </View>
         )
     }

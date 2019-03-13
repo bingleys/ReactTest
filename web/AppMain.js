@@ -96,7 +96,12 @@ const styles = StyleSheet.create({
 
 const RootStack = createStackNavigator({
     AppMain:{screen:AppMain},
-    HelloReactTest:{screen:HelloReactTest},
+    HelloReactTest:{
+        screen:HelloReactTest,
+        navigationOptions:{
+            title:"HelloReactTest"
+        }
+    },
     ComponentTest:{screen:ComponentTest},
     PropsTest:{screen:PropsTest},
     StateTest:{screen:StateTest},

@@ -11,13 +11,6 @@ const instructions = Platform.select({
 
 export default class HelloReactTest extends Component{
 
-    /**
-     * `string` 是模板字符串  ${变量}
-     */
-    static navigationOptions = ({ navigation }) => ({
-        title: `${navigation.state.params.navTitle}`,
-    });
-
     render(){
         return (
 
